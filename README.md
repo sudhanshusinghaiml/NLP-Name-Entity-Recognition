@@ -12,12 +12,6 @@ This is an NLP Project for Token Classification also known as Name Entitiy Recog
  - app.py
 
 
-
-## Live matarials docs
-
-[link](https://docs.google.com/document/d/1UFiHnyKRqgx8Lodsvdzu58LbVjdWHNf-uab2WmhE0A4/edit?usp=sharing)
-
-
 ## Git commands
 
 ```bash
@@ -103,21 +97,24 @@ python app.py
 
 ### 6. Open EC2 and Install docker in EC2 Machine:
 
-	#optinal
+- Optinal
 
-	sudo apt-get update -y
-	sudo apt-get upgrade
+```bash
+sudo apt-get update -y
+sudo apt-get upgrade
+```
+	
+- Required
 
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-	sudo sh get-docker.sh
-	sudo usermod -aG docker ubuntu
-	newgrp docker
-
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+```
 
 ### 7. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+- setting>actions>runner>new self hosted runner> choose os> then run command one by one
 
 ### 8. Setup github secrets:
 
