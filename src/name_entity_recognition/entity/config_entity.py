@@ -16,6 +16,8 @@ class DataIngestionConfig:
 
         self.csv_data_file_path = os.path.join(self.data_ingestion_artifacts_dir, CSV_DATA_FILE_NAME)
 
+        self.data_storage_bucket = DATA_BUCKET_NAME
+
 
 @dataclass
 class DataTransformationConfig:

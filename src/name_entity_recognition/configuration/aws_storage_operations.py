@@ -12,7 +12,7 @@ from src.name_entity_recognition.logger import logging
 from src.name_entity_recognition.exception import NERException
 
 
-class S3Operation:
+class S3Operations:
     """This class encapsulates contains all the methods that will be used for S3 Operations"""
 
     def __init__(self):
