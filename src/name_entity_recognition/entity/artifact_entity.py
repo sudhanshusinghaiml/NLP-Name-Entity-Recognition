@@ -38,4 +38,4 @@ class ModelEvaluationArtifacts:
 class ModelPusherArtifacts:
     """Model Pusher Artifacts"""
     bucket_name: str
-    trained_model_path: str
+    model_path: str

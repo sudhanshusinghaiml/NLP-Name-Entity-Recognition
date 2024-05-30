@@ -39,6 +39,10 @@ class DataTransformationConfig:
 
         self.unique_labels_path = os.path.join(self.data_transformation_artifacts_dir, UNIQUE_LABELS_FILE_NAME)
 
+        self.data_storage_bucket = DATA_BUCKET_NAME
+
+        self.ids_to_labels_file_name = IDS_TO_LABELS_FILE_NAME
+
     
 @dataclass
 class ModelTrainingConfig:
@@ -51,6 +55,10 @@ class ModelTrainingConfig:
         self.tokenizer_file_path = os.path.join(self.model_training_artifacts_dir, TOKENIZER_FILE_NAME)
 
         self.tokenizer_file_storage_path = os.path.join(self.model_training_artifacts_dir)
+
+        self.model_training_learning_rate = MODEL_TRAINING_LEARNING_RATE
+        self.model_training_epochs = MODEL_TRAINING_NO_EPOCHS
+        self.model_training_batch_size = MODEL_TRAINING_BATCH_SIZE
 
 
 @dataclass
