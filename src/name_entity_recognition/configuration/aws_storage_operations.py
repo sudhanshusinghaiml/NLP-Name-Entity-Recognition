@@ -8,8 +8,6 @@ from pandas import DataFrame, read_csv
 import boto3
 from botocore.exceptions import ClientError
 from mypy_boto3_s3.service_resource import Bucket
-
-# from src.object_detection.constants import *
 from src.name_entity_recognition.logger import logging
 from src.name_entity_recognition.exception import NERException
 
@@ -39,16 +37,7 @@ class S3Operation:
         """
         logging.info("Entered the read_object method of S3Operations class")
         try:
-            # if isinstance(object_name, io.IOBase) and object_name.readable():
-            #     if decode is True:
-            #         unconv_object = object_name.get()["Body"].read().decode()
-            #     else:
-            #         unconv_object = object_name.get()["Body"].read()
-            # else:
-            #     if make_readable is True:
-            #         converted_object = io.BytesIO(unconv_object)
-            #     else:
-            #         converted_object = unconv_object
+
             body = object_name.get()["Body"].read()
 
             logging.info("Exited the read_object method of S3Operations class")
@@ -88,13 +77,7 @@ class S3Operation:
         """
         try:
             bucket = self.get_bucket(bucket_name)
-            # file_objects = []
-            # for file_object in bucket.objects.filter(Prefix=s3_model_key):
-            #     file_objects.append(file_object)
-            # if len(file_objects) > 0:
-            #     return True
-            # else:
-            #     return False
+
             return any(True for _ in bucket.objects.filter(Prefix=s3_model_key))
 
         except Exception as error:
@@ -146,7 +129,6 @@ class S3Operation:
                 model_file = model_name
             else:
                 model_file = os.path.join(model_dir, model_name)
-                # model_file = model_dir + "/" + model_name
 
             file_object = self.get_file_object(model_file, bucket_name)
             model_object = self.read_object(file_object, decode=False)
