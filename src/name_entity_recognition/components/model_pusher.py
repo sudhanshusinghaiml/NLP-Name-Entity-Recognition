@@ -20,12 +20,11 @@ class ModelPusher:
         model_pusher_config: ModelPusherConfig,
         model_training_artifacts: ModelTrainingArtifacts,
         model_evaluation_artifacts: ModelEvaluationArtifacts,
-        s3_storage: S3Operations,
     ):
         self.model_pusher_config = model_pusher_config
         self.model_training_artifacts = model_training_artifacts
         self.model_evaluation_artifacts = model_evaluation_artifacts
-        self.s3_storage = s3_storage
+        self.s3_storage = S3Operations()
 
     def initiate_model_pusher(self) -> ModelPusherArtifacts:
         """This method is used for pushing the models into S3 Bucket"""
@@ -35,7 +34,7 @@ class ModelPusher:
                          src.object_detection.model_pusher.ModelPusher"
             )
             
-            if self.model_evaluation_artifacts.is_model_accepted == True:
+            if self.model_evaluation_artifacts.is_trained_model_accepted == True:
 
                 self.s3_storage.upload_file(
                     self.model_training_artifacts.bert_model_path,

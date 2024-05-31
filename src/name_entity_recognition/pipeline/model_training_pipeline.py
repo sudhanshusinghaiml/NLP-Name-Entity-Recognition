@@ -130,7 +130,7 @@ class TrainingPipeline:
             raise NERException(error, sys) from error
         
 
-    def start_model_pusher(self, model_evaluation_artifacts: ModelEvaluationArtifacts) -> ModelPusherArtifacts:
+    def start_model_pusher(self, model_training_artifacts: ModelTrainingArtifacts, model_evaluation_artifacts: ModelEvaluationArtifacts) -> ModelPusherArtifacts:
         """This method is used for triggering pushing the best model to cloud storage"""
         try:
             logging.info("Inside the start_model_pusher method of \
@@ -138,7 +138,8 @@ class TrainingPipeline:
             
             model_pusher = ModelPusher(
                 model_pusher_config = self.model_pusher_config,
-                model_evaluation_artifact = model_evaluation_artifacts,
+                model_training_artifacts = model_training_artifacts,
+                model_evaluation_artifacts = model_evaluation_artifacts,
             )
 
             model_pusher_artifact = model_pusher.initiate_model_pusher()
@@ -177,10 +178,11 @@ class TrainingPipeline:
                 model_training_artifacts = model_training_artifacts,
             )
 
-            logging.info("Completed Model Evaluation >>>>>>>>>>>>>>>>>>>>>>>>>>")
+            logging.info("Completed Model Evaluation >>>>>>>>>>>>>>>>>>>>>>>>>>")            
 
             model_pusher_artifacts = self.start_model_pusher(
-                model_evaluation_artifact = model_evaluation_artifacts
+                model_training_artifacts = model_training_artifacts,
+                model_evaluation_artifacts = model_evaluation_artifacts
             )
 
             logging.info("Completed Model Pusher >>>>>>>>>>>>>>>>>>>>>>>>>>")

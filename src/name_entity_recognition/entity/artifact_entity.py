@@ -30,8 +30,8 @@ class ModelTrainingArtifacts:
 @dataclass
 class ModelEvaluationArtifacts:
     """Model Evaluation Artifacts"""
-    model_accuracy: float
-    is_model_accepted: bool
+    trained_model_accuracy: float
+    is_trained_model_accepted: bool
 
 
 @dataclass

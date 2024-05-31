@@ -59,9 +59,8 @@ class ModelEvaluationConfig:
     """Model Evaluation Configurations"""
     def __init__(self):
         self.model_evaluation_artifacts_dir = os.path.join(ARTIFACTS_DIR, MODEL_EVALUATION_ARTIFACTS_DIR)
-        self.aws_model_path = os.getcwd()
-        
-        self.aws_local_path = AWS_MODEL_NAME
+        self.aws_model_name = AWS_MODEL_NAME
+        self.aws_model_path = os.path.join(self.model_evaluation_artifacts_dir, AWS_MODEL_NAME)
 
 
 @dataclass

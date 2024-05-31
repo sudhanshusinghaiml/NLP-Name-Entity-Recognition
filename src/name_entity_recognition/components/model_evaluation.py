@@ -112,19 +112,19 @@ class ModelEvaluation:
 
             # Loading model from google container registry
             self.s3_storage.download_object(
-                key = self.model_evaluation_config.aws_model_path,
+                key = AWS_MODEL_NAME,
                 bucket_name = MODEL_BUCKET_NAME,
-                filename = AWS_MODEL_NAME,
+                filename = self.model_evaluation_config.aws_model_path,
             )
 
             # Checking whether data file exists in the artifacts directory or not
-            if os.path.exists(self.model_evaluation_config.aws_local_path) == True:
+            if os.path.exists(self.model_evaluation_config.aws_model_path) == True:
                 logging.info("AWS model file available in the root directory")
 
-                gcp_model = torch.load(self.model_evaluation_config.gcp_local_path, map_location=torch.device('cpu'))
+                aws_model = torch.load(self.model_evaluation_config.aws_model_path, map_location=torch.device('cpu'))
                 logging.info("AWS model loaded")
 
-                aws_model_accuracy = self.evaluate(model=gcp_model, df_test=df_test)
+                aws_model_accuracy = self.evaluate(model=aws_model, df_test=df_test)
                 logging.info(
                     f"Calculated the AWS model's Test accuracy. - {aws_model_accuracy}"
                 )
@@ -138,8 +138,8 @@ class ModelEvaluation:
                 logging.info("AWS model is not available locally for comparison.")
 
             model_evaluation_artifact = ModelEvaluationArtifacts(
-                trained_model_accuracy=trained_model_accuracy,
-                is_model_accepted=trained_model_accuracy > tmp_best_model_score,
+                trained_model_accuracy = trained_model_accuracy,
+                is_trained_model_accepted = trained_model_accuracy > tmp_best_model_score,
             )
                         
             logging.info("Completed execution of initiate_model_evaluation method of \
