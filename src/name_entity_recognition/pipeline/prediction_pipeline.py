@@ -120,23 +120,23 @@ class ModelPredictor:
             logging.info(f"Created {self.model_predictor_config.best_model_dir} directory.")
 
             self.s3_storage.download_object(
-                key = self.model_predictor_config.tokenizer_local_path,
+                key = TOKENIZER_FILE_NAME,
                 bucket_name = MODEL_BUCKET_NAME,
-                filename = TOKENIZER_FILE_NAME,
+                filename = self.model_predictor_config.tokenizer_local_path,
             )
             logging.info("Tokenizer Pickle file downloaded from google storage")
 
             self.s3_storage.download_object(
-                key = self.model_predictor_config.ids_to_labels_local_path,
-                bucket_name = MODEL_BUCKET_NAME,
-                filename = IDS_TO_LABELS_FILE_NAME,
+                key = IDS_TO_LABELS_FILE_NAME,
+                bucket_name = DATA_BUCKET_NAME,
+                filename = self.model_predictor_config.ids_to_labels_local_path
             )
             logging.info("ids to label Pickle file downloaded from google storage")
 
             self.s3_storage.download_object(
-                key = self.model_predictor_config.best_model_path,
+                key = AWS_MODEL_NAME, 
                 bucket_name = MODEL_BUCKET_NAME,
-                filename = AWS_MODEL_NAME,
+                filename = self.model_predictor_config.best_model_path,
             )
             logging.info("Downloaded best model to Best_model directory.")
 

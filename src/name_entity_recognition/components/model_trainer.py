@@ -240,12 +240,13 @@ class ModelTraining:
 
             logging.info(f"Dumped pickle file {self.model_training_config.tokenizer_file_path}")
 
-            self.s3_storage.upload_file(
-                
+            self.s3_storage.upload_file(                
                 from_filename= self.model_training_config.tokenizer_file_path,
                 to_filename = TOKENIZER_FILE_NAME,
                 bucket_name = MODEL_BUCKET_NAME,
+                remove= False
             )
+            
             logging.info(f"Uploaded pickle {self.model_training_config.tokenizer_file_path} to AWS")
 
             model_training_artifacts = ModelTrainingArtifacts(
