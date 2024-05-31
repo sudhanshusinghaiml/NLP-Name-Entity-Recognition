@@ -18,6 +18,8 @@ class DataIngestionConfig:
 
         self.data_storage_bucket = DATA_BUCKET_NAME
 
+        self.s3_data_file = S3_ZIP_FILE_NAME
+
 
 @dataclass
 class DataTransformationConfig:
