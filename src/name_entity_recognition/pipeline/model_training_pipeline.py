@@ -89,7 +89,7 @@ class TrainingPipeline:
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             model_trainer = ModelTraining(
-                model_trainer_config=self.model_training_config,
+                model_training_config=self.model_training_config,
                 data_transformation_artifacts=data_transformation_artifacts,
             )
             model_trainer_artifact = model_trainer.initiate_model_training()

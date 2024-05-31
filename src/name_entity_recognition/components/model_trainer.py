@@ -99,7 +99,7 @@ class DataSequence(torch.utils.data.Dataset):
 
 class ModelTraining:
     """This class encapulates all the methods that are used for Model Training"""
-    def __init(self, model_training_config: ModelTrainingConfig, data_transformation_artifacts: DataTransformationArtifacts):
+    def __init__(self, model_training_config: ModelTrainingConfig, data_transformation_artifacts: DataTransformationArtifacts):
         self.model_training_config = model_training_config
         self.data_transformation_artifacts = data_transformation_artifacts
         self.utils = MainUtils()
