@@ -15,7 +15,7 @@ from src.name_entity_recognition.utils.utils import MainUtils
 
 class DataTransformation:
     """This class encapulates all the methods that are used for data transformation"""
-    def __init(self, data_transformation_config: DataTransformationConfig, data_ingestion_artifacts: DataIngestionArtifacts):
+    def __init__(self, data_transformation_config: DataTransformationConfig, data_ingestion_artifacts: DataIngestionArtifacts):
         self.data_transformation_config = data_transformation_config
         self.data_ingestion_artifacts = data_ingestion_artifacts
         self.utils = MainUtils()

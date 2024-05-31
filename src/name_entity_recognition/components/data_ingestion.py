@@ -22,7 +22,7 @@ class DataIngestion:
                          src.name_entity_recognition.components.data_ingestion.DataIngestion class")
             
             self.s3_storage.download_object(
-                key= self.data_ingestion_config.data_ingestion_artifacts_dir,
+                key= self.data_ingestion_config.s3_data_file,
                 bucket_name= self.data_ingestion_config.data_storage_bucket,
                 filename = self.data_ingestion_config.s3_data_file_path
                 )

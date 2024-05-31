@@ -60,7 +60,7 @@ class TrainingPipeline:
     def start_data_transformation(self, data_ingestion_artifact: DataIngestionArtifacts) -> DataTransformationArtifacts:
         """This method is used for triggering data transformation"""
         try:
-            logging.info("Inside the start_data_ingestion method of \
+            logging.info("Inside the start_data_transformation method of \
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             data_transformation = DataTransformation(
@@ -72,7 +72,7 @@ class TrainingPipeline:
                 data_transformation.initiate_data_transformation()
             )
 
-            logging.info("Completed execution of start_data_ingestion method of \
+            logging.info("Completed execution of start_data_transformation method of \
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             return data_transformation_artifact
