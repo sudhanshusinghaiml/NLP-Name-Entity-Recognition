@@ -42,7 +42,7 @@ MODEL_TRAINING_BATCH_SIZE: int = 2
 
 
 """
-MODEL PUSHER related constanta
+MODEL Evaluation related constanta
 """
 MODEL_EVALUATION_ARTIFACTS_DIR = "ModelEvaluationArtifacts"
 
@@ -51,6 +51,11 @@ MODEL PUSHER related constants
 """
 MODEL_BUCKET_NAME: str = "name-entity-recognition-model-30052024"
 
+
+"""
+MODEL Predictor related constants
+"""
+MODEL_PREDICTOR_ARTIFACTS_DIR = "ModelPredictorArtifacts"
 
 """
 APPLICATION Constants

@@ -85,8 +85,8 @@ class ModelPusherConfig:
 class ModelPredictorConfig:
     """Model Predictor Configurations"""
     def __init__(self):
-        self.tokenizer_local_path = TOKENIZER_FILE_NAME
-        self.ids_to_labels_local_path = IDS_TO_LABELS_FILE_NAME
-        self.best_model_dir = BEST_MODEL_DIRECTORY
-        self.best_model_from_aws_path = os.path.join(BEST_MODEL_DIRECTORY)
-        self.best_model_path = os.path.join(BEST_MODEL_DIRECTORY, AWS_MODEL_NAME)
+        self.model_predictor_artifacts_dir = os.path.join(ARTIFACTS_DIR, MODEL_PREDICTOR_ARTIFACTS_DIR)
+        self.tokenizer_local_path = os.path.join(self.model_predictor_artifacts_dir, TOKENIZER_FILE_NAME)
+        self.ids_to_labels_local_path = os.path.join(self.model_predictor_artifacts_dir, IDS_TO_LABELS_FILE_NAME)
+        self.best_model_dir = os.path.join(self.model_predictor_artifacts_dir, BEST_MODEL_DIRECTORY)
+        self.best_model_path = os.path.join(self.best_model_dir, AWS_MODEL_NAME)
