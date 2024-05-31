@@ -104,16 +104,17 @@ class TrainingPipeline:
             raise NERException(error, sys) from error
         
 
-    def start_model_evaluation(self, data_transformation_artifacts: DataTransformationArtifacts, model_trainer_artifacts: ModelTrainingArtifacts) -> ModelEvaluationArtifacts:
+    def start_model_evaluation(self, data_transformation_artifacts: DataTransformationArtifacts, model_training_artifacts: ModelTrainingArtifacts) -> ModelEvaluationArtifacts:
         """This method is used for triggering model evaluation"""
         try:
             logging.info("Inside the start_model_evaluation method of \
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             model_evaluation = ModelEvaluation(
+                model_evaluation_config = self.model_evaluation_config,
                 data_transformation_artifacts = data_transformation_artifacts,
-                model_training_artifacts = model_trainer_artifacts,
-                model_evaluation_config=self.model_evaluation_config,
+                model_training_artifacts = model_training_artifacts,
+                
             )
 
             model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
@@ -136,9 +137,10 @@ class TrainingPipeline:
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             model_pusher = ModelPusher(
-                model_evaluation_artifact=model_evaluation_artifacts,
-                model_pusher_config=self.model_pusher_config,
+                model_pusher_config = self.model_pusher_config,
+                model_evaluation_artifact = model_evaluation_artifacts,
             )
+
             model_pusher_artifact = model_pusher.initiate_model_pusher()
 
             logging.info("Completed execution of start_model_pusher method of \
@@ -165,20 +167,20 @@ class TrainingPipeline:
 
             logging.info("Completed Data Transformation >>>>>>>>>>>>>>>>>>>>>>>>")
 
-            model_trainer_artifact = self.start_model_training(
+            model_training_artifacts = self.start_model_training(
                 data_transformation_artifacts=data_transformation_artifacts
             )
             logging.info("Completed Model Training >>>>>>>>>>>>>>>>>>>>>>>>")
 
-            model_evaluation_artifact = self.start_model_evaluation(
-                data_transformation_artifact=data_transformation_artifacts,
-                model_trainer_artifact=model_trainer_artifact,
+            model_evaluation_artifacts = self.start_model_evaluation(
+                data_transformation_artifacts = data_transformation_artifacts,
+                model_training_artifacts = model_training_artifacts,
             )
 
             logging.info("Completed Model Evaluation >>>>>>>>>>>>>>>>>>>>>>>>>>")
 
-            model_pusher_artifact = self.start_model_pusher(
-                model_evaluation_artifact=model_evaluation_artifact
+            model_pusher_artifacts = self.start_model_pusher(
+                model_evaluation_artifact = model_evaluation_artifacts
             )
 
             logging.info("Completed Model Pusher >>>>>>>>>>>>>>>>>>>>>>>>>>")
