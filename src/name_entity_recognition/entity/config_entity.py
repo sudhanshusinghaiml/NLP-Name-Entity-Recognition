@@ -9,15 +9,11 @@ class DataIngestionConfig:
     """Data Ingestion Configurations"""
     def __init__(self):
         self.data_ingestion_artifacts_dir = os.path.join(ARTIFACTS_DIR, DATA_INGESTION_ARTIFACTS_DIR)
-
         self.s3_data_file_path = os.path.join(self.data_ingestion_artifacts_dir, S3_ZIP_FILE_NAME)
-
         self.output_file_path = self.data_ingestion_artifacts_dir
-
         self.csv_data_file_path = os.path.join(self.data_ingestion_artifacts_dir, CSV_DATA_FILE_NAME)
 
         self.data_storage_bucket = DATA_BUCKET_NAME
-
         self.s3_data_file = S3_ZIP_FILE_NAME
 
 
@@ -33,6 +29,7 @@ class DataTransformationConfig:
         self.df_val_path = os.path.join(self.data_transformation_artifacts_dir, DF_VAL_FILE_NAME)
         self.df_test_path = os.path.join(self.data_transformation_artifacts_dir, DF_TEST_FILE_NAME)
         self.unique_labels_path = os.path.join(self.data_transformation_artifacts_dir, UNIQUE_LABELS_FILE_NAME)
+
         self.data_storage_bucket = DATA_BUCKET_NAME
         self.ids_to_labels_file_name = IDS_TO_LABELS_FILE_NAME
         self.labels_to_ids_file_name  = LABELS_TO_IDS_FILE_NAME
@@ -48,11 +45,8 @@ class ModelTrainingConfig:
     """Model Training Configurations"""
     def __init__(self):
         self.model_training_artifacts_dir = os.path.join(ARTIFACTS_DIR, MODEL_TRAINING_ARTIFACTS_DIR)
-
         self.bert_model_instance_path = os.path.join(self.model_training_artifacts_dir, AWS_MODEL_NAME)
-
         self.tokenizer_file_path = os.path.join(self.model_training_artifacts_dir, TOKENIZER_FILE_NAME)
-
         self.tokenizer_file_storage_path = os.path.join(self.model_training_artifacts_dir)
 
         self.model_training_learning_rate = MODEL_TRAINING_LEARNING_RATE
@@ -65,7 +59,6 @@ class ModelEvaluationConfig:
     """Model Evaluation Configurations"""
     def __init__(self):
         self.model_evaluation_artifacts_dir = os.path.join(ARTIFACTS_DIR, MODEL_EVALUATION_ARTIFACTS_DIR)
-        
         self.aws_model_path = os.getcwd()
         
         self.aws_local_path = AWS_MODEL_NAME

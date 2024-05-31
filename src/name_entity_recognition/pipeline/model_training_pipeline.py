@@ -64,8 +64,8 @@ class TrainingPipeline:
                          src.name_entity_recognition.pipeline.model_training_pipeline.TrainingPipeline class")
             
             data_transformation = DataTransformation(
-                data_transformation_config=self.data_transformation_config,
-                data_ingestion_artifacts=data_ingestion_artifact,
+                data_transformation_config = self.data_transformation_config,
+                data_ingestion_artifacts = data_ingestion_artifact,
             )
 
             data_transformation_artifact = (
