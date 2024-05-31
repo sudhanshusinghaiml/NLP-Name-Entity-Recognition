@@ -79,6 +79,14 @@ class DataTransformation:
                 output_filepath=self.data_transformation_config.labels_to_ids_path,
                 data=labels_to_ids,
             )
+
+            self.s3_storage.upload_file(
+                self.data_transformation_config.labels_to_ids_path,
+                self.data_transformation_config.labels_to_ids_file_name,
+                self.data_transformation_config.data_storage_bucket,
+                remove=False,
+            )
+
             logging.info(
                 f"Saved the labels to ids pickle file to Artifacts directory.\
                     File name - {self.data_transformation_config.labels_to_ids_path}"
@@ -110,6 +118,13 @@ class DataTransformation:
                 data=df_train,
             )
 
+            self.s3_storage.upload_file(
+                self.data_transformation_config.df_train_path,
+                self.data_transformation_config.df_train_file_name,
+                self.data_transformation_config.data_storage_bucket,
+                remove=False,
+            )
+
             logging.info(
                 f"Saved the train df pickle file to Artifacts directory.\
                     File name - {self.data_transformation_config.df_train_path}"
@@ -118,6 +133,13 @@ class DataTransformation:
             self.utils.dump_pickle_file(
                 output_filepath=self.data_transformation_config.df_val_path, 
                 data=df_val
+            )
+
+            self.s3_storage.upload_file(
+                self.data_transformation_config.df_val_path,
+                self.data_transformation_config.df_val_file_name,
+                self.data_transformation_config.data_storage_bucket,
+                remove=False,
             )
 
             logging.info(
@@ -130,6 +152,13 @@ class DataTransformation:
                 data=df_test,
             )
             
+            self.s3_storage.upload_file(
+                self.data_transformation_config.df_test_path,
+                self.data_transformation_config.df_test_file_name,
+                self.data_transformation_config.data_storage_bucket,
+                remove=False,
+            )
+
             logging.info(
                 f"Saved the test df pickle file to Artifacts directory.\
                     File name - {self.data_transformation_config.df_test_path}"
@@ -139,6 +168,14 @@ class DataTransformation:
                 output_filepath=self.data_transformation_config.unique_labels_path,
                 data=unique_labels,
             )
+
+            self.s3_storage.upload_file(
+                self.data_transformation_config.unique_labels_path,
+                self.data_transformation_config.unique_labels_file_name,
+                self.data_transformation_config.data_storage_bucket,
+                remove=False,
+            )
+
             logging.info(
                 f"Saved the unique labels pickle file to Artifacts directory.\
                     File name - {self.data_transformation_config.unique_labels_path}"

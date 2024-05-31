@@ -26,24 +26,21 @@ class DataTransformationConfig:
     """Data Transformation Configurations"""
     def __init__(self):
         self.data_transformation_artifacts_dir = os.path.join(ARTIFACTS_DIR, DATA_TRANSFORMATION_ARTIFACTS_DIR)
-
         self.labels_to_ids_path = os.path.join(self.data_transformation_artifacts_dir, LABELS_TO_IDS_FILE_NAME)
-
         self.ids_to_labels_path = os.path.join(self.data_transformation_artifacts_dir, IDS_TO_LABELS_FILE_NAME)
-
         self.ids_to_labels_aws_path = os.path.join(self.data_transformation_artifacts_dir)
-
         self.df_train_path = os.path.join(self.data_transformation_artifacts_dir, DF_TRAIN_FILE_NAME)
-
         self.df_val_path = os.path.join(self.data_transformation_artifacts_dir, DF_VAL_FILE_NAME)
-
         self.df_test_path = os.path.join(self.data_transformation_artifacts_dir, DF_TEST_FILE_NAME)
-
         self.unique_labels_path = os.path.join(self.data_transformation_artifacts_dir, UNIQUE_LABELS_FILE_NAME)
-
         self.data_storage_bucket = DATA_BUCKET_NAME
-
         self.ids_to_labels_file_name = IDS_TO_LABELS_FILE_NAME
+        self.labels_to_ids_file_name  = LABELS_TO_IDS_FILE_NAME
+        self.df_train_file_name = DF_TRAIN_FILE_NAME
+        self.df_val_file_name = DF_VAL_FILE_NAME
+        self.df_test_file_name = DF_TEST_FILE_NAME
+        self.unique_labels_file_name = UNIQUE_LABELS_FILE_NAME
+
 
     
 @dataclass
